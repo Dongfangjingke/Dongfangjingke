@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <!-- 关键：让页面适配移动设备 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>东方男科内部资料</title>
+    <style>
+        /* 重置默认样式，避免图片周围留白 */
+        body, html {
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5; /* 可选：浅灰背景，提升图片可读性 */
+        }
+        /* 容器：限制图片最大宽度，避免过宽溢出 */
+        .image-container {
+            max-width: 1200px; /* 可选：桌面端最大宽度（根据图片原始尺寸调整） */
+            margin: 0 auto; /* 水平居中 */
+            padding: 15px; /* 可选：图片与屏幕边缘的间距 */
+        }
+        /* 核心：让图片自适应 */
+        .long-image {
+            width: 100%; /* 宽度占满容器 */
+            height: auto; /* 高度按比例缩放（保持原图比例） */
+            display: block; /* 消除图片底部空隙 */
+            border-radius: 8px; /* 可选：圆角，提升视觉效果 */
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* 可选：阴影，让图片更突出 */
+        }
+    </style>
+</head>
+<body>
+    <div class="image-container">
+        < img src="Dongfangjingke.png">
+    </div>
+</body>
+</html>
