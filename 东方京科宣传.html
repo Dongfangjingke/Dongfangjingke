@@ -3,39 +3,50 @@
 <head>
 <meta charset="UTF-8" />
 <title>东方京科科普</title>
-<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no" />
 <style>
-    /* 去掉默认边距，让视频贴边 */
-    html,body{
-        margin:0;
-        padding:0;
-        height:100%;
+    /* 通用重置 */
+    *{margin:0;padding:0;box-sizing:border-box;}
+    html,body{height:100%;background:#000;}
+
+    /* 外层仅做居中和安全区适配 */
+    body{
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        padding:env(safe-area-inset-top) env(safe-area-inset-right)
+              env(safe-area-inset-bottom) env(safe-area-inset-left);
     }
 
-    /* 视频容器：占满可视宽度，高按 16:9 等比例自动 */
-    .video-wrapper{
-        width:100%;
-        position:relative;
-        padding-top:56.25%; /* 16:9 的固定高宽比 */
-    }
-
-    /* 让 <video> 绝对定位，完全铺满容器 */
-    .video-wrapper video{
-        position:absolute;
-        top:0;
-        left:0;
+    /* 视频元素 */
+    video{
         width:100%;
         height:100%;
-        object-fit:contain; /* 保持比例，不裁剪 */
+        object-fit:cover;          /* 竖屏全屏，横屏保持比例 */
+    }
+
+    /* 竖屏强制 9:16 全屏 */
+    @media (orientation: portrait){
+        video{object-fit:cover;}   /* 填满 100% 视口 */
+    }
+
+    /* 横屏或桌面浏览器：16:9 居中，最大 100% 可视宽度 */
+    @media (orientation: landscape){
+        video{
+            width:100%;
+            max-width:100%;
+            height:auto;
+            aspect-ratio:16 / 9;   /* 现代浏览器支持 */
+            object-fit:contain;
+        }
     }
 </style>
 </head>
 <body>
-    <div class="video-wrapper">
-        <video controls autoplay muted>
-            <source src="东方京科.mp4" type="video/mp4">
-            您的浏览器不支持视频播放。
-        </video>
-    </div>
+    <video controls autoplay muted playsinline
+           src="东方京科.mp4"
+           poster="东方京科.jpg">
+        您的浏览器不支持视频播放。
+    </video>
 </body>
 </html>
